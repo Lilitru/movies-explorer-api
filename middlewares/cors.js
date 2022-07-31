@@ -5,9 +5,9 @@ const allowedCors = [
   'http://localhost:3000',
   // 'https://localhost:3001',
   'https://localhost:3000',
-  // 'https://api.trumesto.nomoredomains.xyz',
+  'https://api.trumovie.nomoredomains.xyz',
   // 'https://trumesto.nomoredomains.xyz',
-  // 'http://api.trumesto.nomoredomains.xyz',
+  'http://api.trumovie.nomoredomains.xyz',
   // 'http://trumesto.nomoredomains.xyz',
 ];
 

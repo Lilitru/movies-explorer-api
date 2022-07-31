@@ -1,3 +1,3 @@
 # movies-explorer-api
-Сайт проекта 
-Публичный IP 
+Сайт проекта https://api.trumovie.nomoredomains.xyz
+Публичный IP 51.250.29.209
