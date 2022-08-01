@@ -1,13 +1,11 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
 const user = require('../models/user');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
 const BadRequestError = require('../errors/BadRequestError');
 const NotFoundError = require('../errors/NotFoundError');
 const ConflictingRequestError = require('../errors/ConflictingRequestError');
-const UnauthorizedError = require('../errors/UnauthorizedError');
 
 module.exports.getUserInfo = (req, res, next) => {
   user.findById(req.user._id)
@@ -18,12 +16,7 @@ module.exports.getUserInfo = (req, res, next) => {
         return res.send(currentUser);
       }
     })
-    .catch((err) => {
-      if (err.name === 'CastError') {
-        return next(new BadRequestError('Переданы некорректные данные.'));
-      }
-      return next(err);
-    });
+    .catch((err) => next(err));
 };
 
 module.exports.updateUserInfo = (req, res, next) => {
@@ -47,6 +40,9 @@ module.exports.updateUserInfo = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'ValidationError') {
         return next(new BadRequestError('Переданы некорректные данные'));
+      }
+      if (err.code === 11000) {
+        return next(new ConflictingRequestError('Пользователь с таким email уже существует'));
       }
       return next(err);
     });
@@ -90,10 +86,5 @@ module.exports.login = (req, res, next) => {
       // вернём токен
       return res.status(200).send({ message: 'Авторизация пройдена', token });
     })
-    .catch((err) => {
-      if (err.message === 'IncorrectEmail') {
-        return next(new UnauthorizedError('Неправильный логин или пароль'));
-      }
-      return next(err);
-    });
+    .catch((err) => next(err));
 };
