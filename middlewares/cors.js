@@ -1,14 +1,14 @@
 const allowedCors = [
   'http://51.250.29.209',
   'https://51.250.29.209',
-  // 'http://localhost:3001',
+  'http://localhost:3001',
   'http://localhost:3000',
-  // 'https://localhost:3001',
+  'https://localhost:3001',
   'https://localhost:3000',
   'https://api.trumovie.nomoredomains.xyz',
-  // 'https://trumesto.nomoredomains.xyz',
+  'https://trumovie.nomoredomains.xyz',
   'http://api.trumovie.nomoredomains.xyz',
-  // 'http://trumesto.nomoredomains.xyz',
+  'http://trumovie.nomoredomains.xyz',
 ];
 
 const DEFAULT_ALLOWED_METHODS = 'GET, HEAD, PUT, PATCH, POST, DELETE';
