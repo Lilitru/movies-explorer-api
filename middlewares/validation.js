@@ -31,16 +31,16 @@ const validateDeleteMovieRequest = celebrate({
 
 const validateCreateMovieRequest = celebrate({
   body: Joi.object().keys({
-    country: Joi.string().required().min(2).max(50),
-    director: Joi.string().required().min(2).max(50),
+    country: Joi.string().required().min(2),
+    director: Joi.string().required().min(2),
     duration: Joi.number().required(),
     year: Joi.string().required().min(2).max(4),
     description: Joi.string().required(),
     image: Joi.string().required().custom(validateUrl),
     trailerLink: Joi.string().required().custom(validateUrl),
     thumbnail: Joi.string().required().custom(validateUrl),
-    nameRU: Joi.string().required().min(2).max(100),
-    nameEN: Joi.string().required().min(2).max(100),
+    nameRU: Joi.string().required().min(2),
+    nameEN: Joi.string().required().min(2),
     movieId: Joi.number().required(),
   }),
 });
